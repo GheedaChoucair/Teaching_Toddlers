@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
             HttpURLConnection urlConnection;
             try {
                 String u_email = email.getText().toString().toUpperCase(Locale.ROOT);
-                Log.i("EMAIL", u_email);
                 String urlText = "https://teaching-toddlers-default-rtdb.firebaseio.com/users.json?orderBy=\"Email\"&equalTo=\""+u_email+"\"";
                 url = new URL(urlText);
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -72,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
                     char current = (char) data;
                     result += current;
                     data = reader.read();
-                    Log.i("infooooooooooo", result);
                 }
                 urlConnection.disconnect();
                 return result;
@@ -90,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
                 while(key.hasNext())
                 {
                     userKey = (String) key.next();
-                    Log.i("KEEYSSSSSSS", userKey);
                 }
                 if(userKey.isEmpty())
                 {
@@ -125,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                     char current = (char) data;
                     result += current;
                     data = reader.read();
-                    Log.i("infooooooooooo", result);
+
                 }
                 urlConnection.disconnect();
                 return result;
@@ -138,9 +135,9 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(s);
             try{
                 JSONObject json = new JSONObject(s);
-                Log.i("NAME ", "GET THE NAME");
+
                 username = json.getString("Name");
-                Log.i("NAME ", username);
+
                 //IF THE ELEMENT MATCHES THE THE NAME
                 if(json.getString("Email").equalsIgnoreCase(email.getText().toString())) {
                     if (BCrypt.checkpw(password.getText().toString(), json.getString("Password"))!=false)
@@ -184,98 +181,3 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-//
-//    public class GetUserInformation extends AsyncTask<String, Void, String> {
-//        protected String doInBackground(String... urls) {
-//            String result = "";
-//            URL url;
-//            HttpURLConnection urlConnection;
-//            try {
-//                url = new URL("https://teaching-toddlers-default-rtdb.firebaseio.com/users.json");
-//                urlConnection = (HttpURLConnection) url.openConnection();
-//                urlConnection.setRequestMethod("GET");
-//                InputStream in = urlConnection.getInputStream();
-//                InputStreamReader reader = new InputStreamReader(in);
-//                int data = reader.read();
-//                while (data != -1) {
-//                    char current = (char) data;
-//                    result += current;
-//                    data = reader.read();
-//                    Log.i("infooooooooooo", result);
-//                }
-//                urlConnection.disconnect();
-//                return result;
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//                return null;
-//            }
-//        }
-//        protected void onPostExecute(String s){
-//            super.onPostExecute(s);
-//            try{
-//                JSONObject json = new JSONObject(s);
-//                Log.i("NAME ", "GET THE NAME");
-//
-//                if(!json.has(username.getText().toString())) {
-//                    setNotFoundNotifyLog();
-//                }
-//                else
-//                {
-//                    for (int i = 0; i < json.length() && foundUser != true; i++) {
-//                        FetchUserInfo task = new FetchUserInfo();
-//                        task.execute("https://teaching-toddlers-default-rtdb.firebaseio.com/users/user"+i+".json");
-//                    }
-//                }
-//            }
-//            catch(Exception e){
-//                e.printStackTrace();
-//            }
-//        }
-//    }
-//    public class FetchUserInfo extends AsyncTask<String, Void, String> {
-//        protected String doInBackground(String... urls){
-//            String result = "";
-//            URL url;
-//            HttpURLConnection urlConnection;
-//            try{
-//                url = new URL(urls[0]);
-//                urlConnection = (HttpURLConnection) url.openConnection();
-//                InputStream in = urlConnection.getInputStream();
-//                InputStreamReader reader = new InputStreamReader(in);
-//                int data = reader.read();
-//                while (data != -1) {
-//                    char current = (char) data;
-//                    result += current;
-//                    data = reader.read();
-//                }
-//                return result;
-//            }catch(Exception e) {
-//                e.printStackTrace();
-//                return null;
-//            }
-//        }
-//        protected void onPostExecute(String s){
-//            super.onPostExecute(s);
-//            try{
-//                JSONObject json = new JSONObject(s);
-//                Log.i("Name::::::::: ", json.getString("Name"));
-//                String JSusername = json.getString("Name");
-//                if (JSusername.equalsIgnoreCase(username.getText().toString()))
-//                    foundUser = true;
-//                Log.i("Pass::::::::: ", json.getString("Password"));
-//                String JSpass = json.getString("Password");
-//                if (foundUser == true)
-//                {
-//                    if (JSusername.equalsIgnoreCase(username.getText().toString()) && JSpass.equalsIgnoreCase(password.getText().toString())) {
-//                        setTrueNotifyLog();
-//                    } else {
-//                        setFalseNotifyLog();
-//                    }
-//                }
-//            }catch(Exception e){
-//                e.printStackTrace();
-//            }
-//        }
-//    }
-//
-//

@@ -72,7 +72,6 @@ public class SignUp extends AppCompatActivity {
                     char current = (char) data;
                     result += current;
                     data = reader.read();
-                    Log.i("infooooooooooo", result);
                 }
                 urlConnection.disconnect();
                 return result;
@@ -90,7 +89,6 @@ public class SignUp extends AppCompatActivity {
                 while(key.hasNext())
                 {
                     userKey = (String) key.next();
-                    Log.i("KEEYSSSSSSS", userKey);
                 }
                 if(userKey.isEmpty())
                 {
@@ -127,7 +125,6 @@ public class SignUp extends AppCompatActivity {
                     char current = (char) data;
                     result += current;
                     data = reader.read();
-                    Log.i("infooooooooooo", result);
                 }
                 urlConnection.disconnect();
                 return result;
@@ -145,7 +142,6 @@ public class SignUp extends AppCompatActivity {
                 while(key.hasNext())
                 {
                     userKey = (String) key.next();
-                    Log.i("KEEYSSSSSSS", userKey);
                 }
                 if(userKey.isEmpty())
                 {
@@ -189,7 +185,6 @@ public class SignUp extends AppCompatActivity {
                     char current = (char) data;
                     result += current;
                     data = reader.read();
-                    Log.i("infooooooooooo", result);
                     if (current == '}')
                     {
                         //FIND THE SIZE OF THE TABLE

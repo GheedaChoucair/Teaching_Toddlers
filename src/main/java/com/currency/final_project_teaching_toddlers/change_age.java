@@ -70,7 +70,7 @@ public class change_age extends AppCompatActivity {
                     char current = (char) data;
                     result += current;
                     data = reader.read();
-                    Log.i("infooooooooooo", result);
+
                 }
                 urlConnection.disconnect();
                 return result;
@@ -88,9 +88,9 @@ public class change_age extends AppCompatActivity {
                 while(key.hasNext())
                 {
                     userKey = (String) key.next();
-                    Log.i("KEEYSSSSSSS", userKey);
+
                 }
-                Log.i("KEEYSSSSSSS", userKey);
+
                 if(userKey.isEmpty())
                 {
                     setNotFoundNotifyLog();
@@ -123,7 +123,7 @@ public class change_age extends AppCompatActivity {
                     char current = (char) data;
                     result += current;
                     data = reader.read();
-                    Log.i("infooooooooooo", result);
+
                 }
                 urlConnection.disconnect();
                 return result;
@@ -136,7 +136,7 @@ public class change_age extends AppCompatActivity {
             super.onPostExecute(s);
             try{
                 JSONObject json = new JSONObject(s);
-                Log.i("NAME ", "GET THE NAME");
+
                 username = json.getString("Name");
                 //IF THE ELEMENT MATCHES THE THE NAME
 
@@ -208,7 +208,7 @@ public class change_age extends AppCompatActivity {
                     setFalseNotifyLog();
                 }
                 JSONObject json = new JSONObject(s);
-                Log.i("NAME ", "GET THE NAME");
+
                 username = json.getString("Name");
                 //IF THE ELEMENT MATCHES THE THE NAME
                 if(json.getString("Email").equalsIgnoreCase(email.getText().toString())) {

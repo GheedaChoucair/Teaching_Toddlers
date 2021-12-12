@@ -58,7 +58,7 @@ public class Guess_The_Animal_Level2 extends AppCompatActivity {
         restart = (Button) findViewById(R.id.restart);
         restart.setVisibility(View.INVISIBLE);
         questions = (ArrayList<levelchoose.Question_Solution>) getIntent().getSerializableExtra("QuestionListExtra");
-        Log.i("SIZEEEE", String.valueOf(questions.size()));
+
         for (int i = 0; i< questions.size(); i++)
         {
             Log.i("QUESTIONNNNNN", questions.get(i).getImage_Name());
@@ -69,7 +69,7 @@ public class Guess_The_Animal_Level2 extends AppCompatActivity {
     public void downloadImage(View view){
         Random rand = new Random();
         locationCorrect = rand.nextInt(2);
-        Log.i("CORRECTTT", String.valueOf(locationCorrect));
+
         try{
             for (int i = 0; i < 2 ; i++){
                 if (locationCorrect == i) {
@@ -81,7 +81,7 @@ public class Guess_The_Animal_Level2 extends AppCompatActivity {
                     else
                     if (i == 1)
                         btn2.setText(String.valueOf(questions.get(count).getImage_Name()));
-                    Log.i("COUNT", String.valueOf(count));
+
                 }
                 else
                 {
@@ -127,7 +127,7 @@ public class Guess_The_Animal_Level2 extends AppCompatActivity {
         public void ClickBtn(View view){
         if(clickable == true) {
             String tag = view.getTag().toString();
-            Log.i("TAGGGGG", tag);
+
 
             if (Integer.toString(locationCorrect).equalsIgnoreCase(tag)) {
                 if (btn1.getTag().toString().equals(tag))
@@ -158,9 +158,7 @@ public class Guess_The_Animal_Level2 extends AppCompatActivity {
 
                         }
                     }.start();
-                //Toast.makeText(this, "CORRECT!", Toast.LENGTH_SHORT).show();
 
-                Log.i("SCOREEEE", String.valueOf(score));
             } else {
                 if (btn1.getTag().toString().equalsIgnoreCase(tag))
                     new CountDownTimer(500, 500) {
@@ -186,7 +184,6 @@ public class Guess_The_Animal_Level2 extends AppCompatActivity {
                             btn2.setBackground(getResources().getDrawable(R.drawable.mybutton2));
                         }
                     }.start();
-                //Toast.makeText(this, "INCORRECT!", Toast.LENGTH_SHORT).show();
             }
             try {
                 new CountDownTimer(500, 500) {

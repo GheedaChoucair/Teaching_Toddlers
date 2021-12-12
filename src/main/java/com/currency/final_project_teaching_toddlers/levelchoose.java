@@ -135,7 +135,6 @@ public class levelchoose extends AppCompatActivity {
             try{
                 JSONObject json = new JSONObject(s);
                 array.add(new Question_Solution(json.getString("Name"), json.getString("url")));
-                Log.i("PRINTTTTT", json.getString("Name"));
             }catch(Exception e){
                 e.printStackTrace();
             }
@@ -153,7 +152,6 @@ public class levelchoose extends AppCompatActivity {
                     for (int i = 0; i< 20; i++)
                     {
                         array_transfer.add(array.get(i));
-                        Log.i("DONEE", "DONEE");
                     }
                     GoToAnimalsActivity();
                 }
@@ -179,7 +177,6 @@ public class levelchoose extends AppCompatActivity {
             for (i = 0; i < 30; i++) {
                 DownloadTask task = new DownloadTask();
                 task.execute("https://teaching-toddlers-default-rtdb.firebaseio.com/AnimalsQuestion/q" + i + ".json");
-                //downloadImage(imgView);
             }
             GoToAnimalsActTimer();
 
@@ -207,7 +204,6 @@ public class levelchoose extends AppCompatActivity {
                     char current = (char) data;
                     result += current;
                     data = reader.read();
-                    //Log.i("infooooooooooo", result);
                 }
                 urlConnection.disconnect();
                 return result;
@@ -221,7 +217,6 @@ public class levelchoose extends AppCompatActivity {
             try{
                 JSONObject json = new JSONObject(s);
                 array2.add(json.getString("Name"));
-                Log.i("PRINTTTTT", json.getString("Name"));
             }catch(Exception e){
                 e.printStackTrace();
             }
@@ -239,7 +234,6 @@ public class levelchoose extends AppCompatActivity {
                     for (int i = 0; i< 20; i++)
                     {
                         array_transfer2.add(array2.get(i));
-                        Log.i("DONEE", "DONEE");
                     }
                     GoToAlphaActivity();
                 }
